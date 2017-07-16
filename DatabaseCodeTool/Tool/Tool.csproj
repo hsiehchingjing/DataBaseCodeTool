@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DatabaseFactory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,9 +83,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Template\dal.cst">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\IDatabaseService\IDatabaseService.csproj">
+      <Project>{8c5119c7-de4c-4e33-9e88-26344129fa34}</Project>
+      <Name>IDatabaseService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MySqlDatabaseService\MySqlDatabaseService.csproj">
+      <Project>{7d1d50ff-53f7-481b-af0d-43364a026f59}</Project>
+      <Name>MySqlDatabaseService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

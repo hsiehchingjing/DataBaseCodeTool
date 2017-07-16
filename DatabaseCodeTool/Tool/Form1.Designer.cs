@@ -32,16 +32,17 @@
             this.comboBox_Database = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_CodePath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.folderBrowserDialog_select = new System.Windows.Forms.FolderBrowserDialog();
+            this.button_CreateCode = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox_CodeLanguage = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.listBox_Columus = new System.Windows.Forms.ListBox();
+            this.comboBox_CodeType = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.listBox_Table = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // comboBox_DatabaseType
@@ -78,12 +79,12 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Sql语句";
             // 
-            // textBox1
+            // textBox_CodePath
             // 
-            this.textBox1.Location = new System.Drawing.Point(178, 557);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(492, 25);
-            this.textBox1.TabIndex = 4;
+            this.textBox_CodePath.Location = new System.Drawing.Point(178, 557);
+            this.textBox_CodePath.Name = "textBox_CodePath";
+            this.textBox_CodePath.Size = new System.Drawing.Size(492, 25);
+            this.textBox_CodePath.TabIndex = 4;
             // 
             // label2
             // 
@@ -94,14 +95,15 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "代码文件生成目录位置";
             // 
-            // button1
+            // button_CreateCode
             // 
-            this.button1.Location = new System.Drawing.Point(694, 557);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "生成代码";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_CreateCode.Location = new System.Drawing.Point(678, 606);
+            this.button_CreateCode.Name = "button_CreateCode";
+            this.button_CreateCode.Size = new System.Drawing.Size(176, 55);
+            this.button_CreateCode.TabIndex = 6;
+            this.button_CreateCode.Text = "生成代码";
+            this.button_CreateCode.UseVisualStyleBackColor = true;
+            this.button_CreateCode.Click += new System.EventHandler(this.button_CreateCode_Click);
             // 
             // label3
             // 
@@ -115,66 +117,78 @@
             // comboBox_CodeLanguage
             // 
             this.comboBox_CodeLanguage.FormattingEnabled = true;
-            this.comboBox_CodeLanguage.Location = new System.Drawing.Point(644, 12);
+            this.comboBox_CodeLanguage.Location = new System.Drawing.Point(903, 12);
             this.comboBox_CodeLanguage.Name = "comboBox_CodeLanguage";
             this.comboBox_CodeLanguage.Size = new System.Drawing.Size(121, 23);
             this.comboBox_CodeLanguage.TabIndex = 8;
             // 
-            // comboBox1
+            // listBox_Columus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "insert",
-            "update",
-            "delete",
-            "select"});
-            this.comboBox1.Location = new System.Drawing.Point(16, 160);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 9;
+            this.listBox_Columus.FormattingEnabled = true;
+            this.listBox_Columus.ItemHeight = 15;
+            this.listBox_Columus.Location = new System.Drawing.Point(596, 12);
+            this.listBox_Columus.Name = "listBox_Columus";
+            this.listBox_Columus.Size = new System.Drawing.Size(258, 184);
+            this.listBox_Columus.TabIndex = 11;
             // 
-            // comboBox2
+            // comboBox_CodeType
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(16, 116);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(217, 23);
-            this.comboBox2.TabIndex = 10;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(269, 12);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(258, 184);
-            this.listBox1.TabIndex = 11;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.comboBox_CodeType.FormattingEnabled = true;
+            this.comboBox_CodeType.Items.AddRange(new object[] {
             "五种基础操作",
             "特定sql方法"});
-            this.comboBox3.Location = new System.Drawing.Point(644, 61);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 23);
-            this.comboBox3.TabIndex = 12;
+            this.comboBox_CodeType.Location = new System.Drawing.Point(16, 157);
+            this.comboBox_CodeType.Name = "comboBox_CodeType";
+            this.comboBox_CodeType.Size = new System.Drawing.Size(121, 23);
+            this.comboBox_CodeType.TabIndex = 12;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "全类",
+            "函数"});
+            this.comboBox4.Location = new System.Drawing.Point(178, 522);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 23);
+            this.comboBox4.TabIndex = 13;
+            this.comboBox4.Text = "全类";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(677, 558);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "选择目录";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // listBox_Table
+            // 
+            this.listBox_Table.FormattingEnabled = true;
+            this.listBox_Table.ItemHeight = 15;
+            this.listBox_Table.Location = new System.Drawing.Point(292, 12);
+            this.listBox_Table.Name = "listBox_Table";
+            this.listBox_Table.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBox_Table.Size = new System.Drawing.Size(258, 184);
+            this.listBox_Table.TabIndex = 15;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 686);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.listBox_Table);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.comboBox_CodeType);
+            this.Controls.Add(this.listBox_Columus);
             this.Controls.Add(this.comboBox_CodeLanguage);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_CreateCode);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_CodePath);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.comboBox_Database);
@@ -192,16 +206,17 @@
         private System.Windows.Forms.ComboBox comboBox_Database;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_CodePath;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_select;
+        private System.Windows.Forms.Button button_CreateCode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox_CodeLanguage;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ListBox listBox_Columus;
+        private System.Windows.Forms.ComboBox comboBox_CodeType;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListBox listBox_Table;
     }
 }
 

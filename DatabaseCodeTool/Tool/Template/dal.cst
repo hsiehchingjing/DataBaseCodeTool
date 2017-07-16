@@ -1,0 +1,42 @@
+﻿using Hayaa.SeedService.Util;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Hayaa.ISeedService.Model;
+
+namespace Hayaa.SeedService.DataAccess
+{
+    class {Table}Dal: CommonDal
+    {      
+        internal static int Add({Table}Info info)
+        {
+            string sql = "insert ({columns}) values({cvalues})";
+            return Update<{Table}Info>(sql, info) ;
+        }
+		  internal static int update({Table}Info info)
+        {
+            string sql = "update {Table} set {columns} where {Table}ID=@{Table}ID";
+            return Update<{Table}Info>(sql, info) ;
+        }
+		 internal static bool Delete(List<int> IDs)
+        {
+            string sql = "delete from {Table} where AppID in(@ids)";
+            return Excute(sql, new { ids = IDs.ToArray() })>0;
+        }
+		  internal static {Table}Info Get(int infoID)
+        {
+            string sql = "select * from {Table}  where {Table}ID=@{Table}ID";
+            return Get<{Table}Info>(sql, new{ {Table}ID=infoID}) ;
+        }
+		internal static {Table}Info GetList()
+        {
+            string sql = "select * from {Table}";
+            return GetList<{Table}Info>(sql, null) ;
+        }
+		internal static GridPager<{Table}Info> GetGridPager(int pageSize,int pageIndex,string searcheKey)
+        {
+            string sql = "select SQL_CALC_FOUND_ROWS * from {Table} where 1=1 limit (@pageIndex-1)*@pageSize,@pageIndex*@pageSize;select FOUND_ROWS();";
+            return GetGridPager<{Table}Info>(sql,pageSize,pageIndex,new{pageSize=pageSize,pageIndex=pageIndex,searchKey=searcheKey}) ;
+        }
+    }
+}
