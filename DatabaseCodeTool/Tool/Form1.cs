@@ -71,8 +71,15 @@ namespace Tool
                 tables.Add(listBox_Table.SelectedItems[i].ToString());
             }
             var path = textBox_CodePath.Text + "/{Table}dal.cs";
+            var databaseService = DatabaseFactory.GetIDatabase(comboBox_DatabaseType.SelectedValue.ToString());
+            string database = ((Database)comboBox_Database.SelectedItem).name;
+            string con = ((Database)comboBox_Database.SelectedItem).value;
             tables.ForEach(table => {
+                var columns = databaseService.GetColumns(database, table, con);
                 string codeTxt = codeTpl.Replace("{Table}", table);
+                codeTxt = codeTxt.Replace("{updatecolumns}", string.Join(",", columns.Select(a=> a=a+"=@"+a )));
+                codeTxt = codeTxt.Replace("{columns}", string.Join(",",columns));
+                codeTxt = codeTxt.Replace("{cvalues}", string.Join(",", columns.Select(a => a = "@" + a)));
                 File.WriteAllText(path.Replace("{Table}", table), codeTxt);
             });
          }

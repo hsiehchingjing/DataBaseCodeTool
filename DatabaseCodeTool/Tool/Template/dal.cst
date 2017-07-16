@@ -15,7 +15,7 @@ namespace Hayaa.SeedService.DataAccess
         }
 		  internal static int update({Table}Info info)
         {
-            string sql = "update {Table} set {columns} where {Table}ID=@{Table}ID";
+            string sql = "update {Table} set {updatecolumns} where {Table}ID=@{Table}ID";
             return Update<{Table}Info>(sql, info) ;
         }
 		 internal static bool Delete(List<int> IDs)
@@ -28,7 +28,7 @@ namespace Hayaa.SeedService.DataAccess
             string sql = "select * from {Table}  where {Table}ID=@{Table}ID";
             return Get<{Table}Info>(sql, new{ {Table}ID=infoID}) ;
         }
-		internal static {Table}Info GetList()
+		internal static List<{Table}Info> GetList()
         {
             string sql = "select * from {Table}";
             return GetList<{Table}Info>(sql, null) ;

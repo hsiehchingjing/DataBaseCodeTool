@@ -12,7 +12,7 @@ namespace MySqlDatabaseService
     {
         public List<string> GetColumns(string databaseName, string tableName, string connection)
         {
-            string sql = "select column_name from information_schema.columns where table_schema='"+ databaseName + "' and table_name='" + databaseName + "';";
+            string sql = "select column_name from information_schema.columns where table_schema='"+ databaseName + "' and table_name='" + tableName + "';";
             MySqlConnection con = new MySqlConnection(connection);
             MySqlCommand cmd = new MySqlCommand(sql);
             cmd.Connection = con;
