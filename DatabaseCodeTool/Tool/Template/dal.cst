@@ -10,7 +10,7 @@ namespace Hayaa.SeedService.DataAccess
     {      
         internal static int Add({Table}Info info)
         {
-            string sql = "insert ({columns}) values({cvalues})";
+            string sql = "insert {Table} ({columns}) values({cvalues})";
             return Update<{Table}Info>(sql, info) ;
         }
 		  internal static int update({Table}Info info)
